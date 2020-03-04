@@ -1,6 +1,69 @@
 // Find the maximum
-
+function maxOfTwoNumbers(a,b){
+  if(a<=b)return b;
+  if(b<a)return a;
+}
 // Finding Longest Word
+function findLongestWord(Array){
+  let strn = Array[0];
+  Array.forEach(function(Word){
+    if(strn.length<Word.length)strn = Word; 
+  });
+  return strn;
+
+}
+function sumArray(Array){
+  if(Array.length == 0) return 0;
+  return Array.reduce(function(acumulator,currentValue){
+    return acumulator + currentValue;
+  });
+
+}
+
+ function averageNumbers(Array){
+     if(Array.length == 0)return undefined;
+     return sumArray(Array)/Array.length;
+    
+ }
+
+function averageWordLength(Array){
+  let temp;
+  if(Array.length == 0)return undefined;
+  temp = Array.reduce(function(acumulator,currentValue){
+    return acumulator + currentValue.length;
+  },0);
+  return temp/Array.length;
+}
+
+function uniquifyArray(Array){
+  if(Array.length == 0)return undefined;
+  /*doble bucle de la muerte, primero i=0 fija arr[0] y lo compara con k=1,k=2->
+  arr[1], arr[2]..., luego i = 1 arr[1] con k=0,k=1-> arr[0],arr[1]... y asi 
+  sucesivamente  si  arr[i] == arr[n] y k!=n se elimina el elemento del array*/
+  for(let i=0;i<Array.length;i++){
+    for(let k=0;k<Array.length;k++){
+      if(Array[i] == Array[k] && k!=i){
+        Array.splice(k,1);
+      }
+    }
+  }
+  return Array;
+}
+
+function doesWordExist(Array,word){
+  if(Array.length == 0){return false;}
+  if(Array.length == 1){return true;}
+  return Array.includes(word);
+
+}
+function howManyTimes(Array,word){
+  let counter = 0;
+  if(Array.length == 0)return undefined;
+for(let i=0;i<Array.length;i++){
+if(Array[i] == word) counter++;
+}
+return counter;
+}
 let words = [
   'mystery',
   'brother',
